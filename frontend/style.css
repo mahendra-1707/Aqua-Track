@@ -1,0 +1,155 @@
+:root {
+  --bg-color: #0b0f19;
+  --card-bg: rgba(23, 32, 51, 0.6);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent-safe: #10b981;
+  --accent-moderate: #f59e0b;
+  --accent-unsafe: #ef4444;
+  --accent-primary: #3b82f6;
+  --glow-safe: rgba(16, 185, 129, 0.4);
+  --glow-moderate: rgba(245, 158, 11, 0.4);
+  --glow-unsafe: rgba(239, 68, 68, 0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+body {
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.1), transparent 25%),
+                    radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.1), transparent 25%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(11, 15, 25, 0.8);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, #60a5fa, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+header p { color: var(--text-secondary); font-size: 1.1rem; }
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  flex: 1;
+  width: 100%;
+}
+
+.status-banner {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.status-banner.safe { border-color: var(--accent-safe); box-shadow: 0 8px 32px var(--glow-safe); }
+.status-banner.moderate { border-color: var(--accent-moderate); box-shadow: 0 8px 32px var(--glow-moderate); }
+.status-banner.unsafe { border-color: var(--accent-unsafe); box-shadow: 0 8px 32px var(--glow-unsafe); }
+
+.status-info h2 { font-size: 2rem; margin-bottom: 0.25rem; }
+.status-info p { color: var(--text-secondary); }
+.status-icon { font-size: 3rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.card-header i { font-size: 1.25rem; color: var(--accent-primary); }
+.card-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.card-unit { font-size: 1rem; color: var(--text-secondary); font-weight: 400; }
+
+.main-chart-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  height: 400px;
+}
+.main-chart-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-block;
+}
+.badge.safe { background: rgba(16, 185, 129, 0.2); color: var(--accent-safe); }
+.badge.moderate { background: rgba(245, 158, 11, 0.2); color: var(--accent-moderate); }
+.badge.unsafe { background: rgba(239, 68, 68, 0.2); color: var(--accent-unsafe); }
+
+/* Stylish decorative glow block */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background: var(--accent-primary);
+  filter: blur(50px);
+  opacity: 0.2;
+  border-radius: 50%;
+}

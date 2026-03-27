@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaGuard IoT | Smart Water Quality Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Aqua track<i class="fa-solid fa-droplet" style="color:var(--accent-primary)"></i></h1>
+        <p>Real-Time Smart Water Quality Monitoring System</p>
+    </header>
+
+    <div class="container">
+        <!-- Intelligent Threat Detection Banner -->
+        <div id="statusBanner" class="status-banner safe">
+            <div class="status-info">
+                <h2 id="overallStatus">System Active</h2>
+                <p id="statusMessage">Initializing sensor network...</p>
+            </div>
+            <div class="status-icon">
+                <i id="statusIcon" class="fa-solid fa-check-circle"></i>
+            </div>
+        </div>
+
+        <!-- Metric Grid -->
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <span>pH Level</span>
+                    <i class="fa-solid fa-flask"></i>
+                </div>
+                <div class="card-value">
+                    <span id="phValue">--</span>
+                </div>
+                <div id="phBadge" class="badge">--</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>TDS (Total Dissolved Solids)</span>
+                    <i class="fa-solid fa-cubes"></i>
+                </div>
+                <div class="card-value">
+                    <span id="tdsValue">--</span>
+                    <span class="card-unit">ppm</span>
+                </div>
+                <div id="tdsBadge" class="badge">--</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>Turbidity</span>
+                    <i class="fa-solid fa-water"></i>
+                </div>
+                <div class="card-value">
+                    <span id="turbidityValue">--</span>
+                    <span class="card-unit">NTU</span>
+                </div>
+                <div id="turbidityBadge" class="badge">--</div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>Temperature</span>
+                    <i class="fa-solid fa-temperature-half"></i>
+                </div>
+                <div class="card-value">
+                    <span id="tempValue">--</span>
+                    <span class="card-unit">°C</span>
+                </div>
+                <div class="badge safe">Operational</div>
+            </div>
+        </div>
+
+        <!-- Analytics Graph -->
+        <div class="main-chart-container">
+            <div class="main-chart-header">
+                <h3>Continuous Trend Analytics</h3>
+                <div class="badge safe">Live <i class="fa-solid fa-circle-waveform"></i></div>
+            </div>
+            <canvas id="historyChart"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
